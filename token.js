@@ -1,5 +1,7 @@
 const {client_id, client_secret} = require('./secret')
 
+let token
+
 async function getToken(){
   const auth = new URLSearchParams({
     grant_type: "client_credentials",
@@ -13,8 +15,20 @@ async function getToken(){
     },
     body: auth
   })
-  const token = await res.json()
+  token = await res.json()
+  console.log(token)
   return token
 }
 
-module.exports = getToken;
+token = getToken()
+
+
+setInterval(() => {
+  token = getToken()
+}, 350000)
+
+function returnToken(){
+  return token
+}
+
+module.exports = returnToken;

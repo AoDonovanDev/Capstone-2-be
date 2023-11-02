@@ -1,16 +1,10 @@
-
 const express = require('express'); // Express web server framework
-const request = require('request'); // "Request" library
 const cors = require('cors');
-const querystring = require('querystring');
-const cookieParser = require('cookie-parser');
-const getToken = require('./token')
+
+
 const ExpressError = require('./expressError')
 
-
-
 const app = express()
-
 
 // allow both form-encoded and json body parsing
 app.use(express.json());
@@ -19,10 +13,9 @@ app.use(express.urlencoded({extended: true}));
 // allow connections to all routes from any browser
 app.use(cors());
 
-let token = getToken()
-setInterval(() => {
-  token = getToken()
-}, 10000)
+const searchRoutes = require('./routes/search')
+
+app.use("/search", searchRoutes)
 
 app.use(function(req, res, next) {
   const err = new ExpressError("Not Found", 404);
