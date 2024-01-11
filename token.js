@@ -1,12 +1,10 @@
-const {client_id, client_secret} = require('./secret')
-
 let token
 
 async function getToken(){
   const auth = new URLSearchParams({
     grant_type: "client_credentials",
-    client_id,
-    client_secret,
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET
   })
   const res = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
@@ -15,8 +13,9 @@ async function getToken(){
     },
     body: auth
   })
-  token = await res.json()
-  console.log(token)
+  token = await res.json();
+  const time = new Date().toLocaleTimeString();
+  console.log(token, time);
   return token
 }
 
@@ -24,8 +23,8 @@ token = getToken()
 
 
 setInterval(() => {
-  token = getToken()
-}, 350000)
+  token = getToken();
+}, 3500000)
 
 function returnToken(){
   return token

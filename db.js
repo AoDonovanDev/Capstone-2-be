@@ -1,10 +1,8 @@
 const { Sequelize } = require('sequelize');
-const { dburi } = require('./secret')
 
-// Option 1: Passing a connection URI
-const sequelize = new Sequelize(dburi) // Example for postgres
+const sequelize = new Sequelize(process.env.DBURI) 
 
-async function fuckyou(){
+async function connect_db(){
 try {
   await sequelize.authenticate();
   console.log('Connection has been established successfully.');
@@ -13,4 +11,5 @@ try {
 }
 }
 
-fuckyou()
+connect_db()
+module.exports = sequelize;
