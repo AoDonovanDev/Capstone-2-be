@@ -1,0 +1,2 @@
+Backend for Soundrake web app. DB managed with Sequelize. Express server to handle requests. JWT auth for Soundrake users. Server has its own authentication token for
+Spotify web API renewed ever ~55mins.

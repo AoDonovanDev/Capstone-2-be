@@ -1,5 +1,6 @@
 const express = require("express");
 const router = new express.Router();
+const Ratings = require("../models/ratings")
 
 const returnToken = require('../token')
 
@@ -21,6 +22,10 @@ router.get('/:id', async function(req, res, next){
       }
     })
     const searchResults = await Promise.all([artistResponse.json(), albumsResponse.json()])
+    for(let result of searchResults[1].items){
+      result.avg = await Ratings.average(result.id);
+      console.log('search results route', result, result.id)
+    }
     return res.json({searchResults})
     } catch(e){
       console.log(e)
