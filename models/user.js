@@ -52,8 +52,8 @@ Ratings.User = Ratings.belongsTo(User);
 
 
 
-/* 
-sequelize.sync({force:true}) */
+
+sequelize.sync({force:true})
 
 
 
