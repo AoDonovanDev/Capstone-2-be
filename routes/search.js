@@ -6,7 +6,6 @@ const returnToken = require('../token')
 
 router.get('/:searchType/:queryString', async function(req, res, next){
   const { searchType, queryString } = req.params;
-  console.log('searchtype and qstring in search route', searchType, queryString)
   const query = `${queryString}&type=${searchType}`;
   try {
     const {access_token, token_type} = await returnToken();

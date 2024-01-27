@@ -45,7 +45,6 @@ router.get('/spotify', async function(req, res, next){
 
 router.post('/token', async function (req, res, next){
   const { code } = req.body;
-  console.log('code in token route', req.body)
   const authOptions = new URLSearchParams({
     code,
     redirect_uri: `${process.env.FRONTEND_BASE_URL}/spotify/callback`,

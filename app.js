@@ -7,13 +7,10 @@ const ExpressError = require('./expressError')
 
 const app = express()
 
-// allow both form-encoded and json body parsing
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// allow connections to all routes from any browser
 app.use(cors());
-app.use(express.static('public'));
 
 const searchRoutes = require('./routes/search');
 const authRoutes = require('./routes/auth');

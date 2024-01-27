@@ -1,10 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db.js');
-const { v4: uuidv4 } = require('uuid');
 
-const idGen = function(){
-  return uuidv4();
-}
 
 const Likes = sequelize.define('Likes', {
   // Model attributes are defined here

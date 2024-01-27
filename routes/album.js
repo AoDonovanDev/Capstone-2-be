@@ -28,10 +28,10 @@ router.get('/:id', async function(req, res, next){
       }
     return res.json({searchResults})
     }
-    catch(e){
-      console.log(e)
-      return next(e)
-    }
+  catch(e){
+    console.log(e)
+    return next(e)
+  }
 })
 
 module.exports = router;
