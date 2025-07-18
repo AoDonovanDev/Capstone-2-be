@@ -29,9 +29,6 @@ router.post('/signin', async function (req, res, next){
 })
 
 router.get('/spotify', async function(req, res, next){
-  console.log("************** req hostname *****************", req.hostname);  
-  console.log("************************try 3 **************", req.get('origin'));
-  console.log("*****************req 67***************", req.socket.remoteAddress);
   var scope = "streaming \
                user-read-email \
                user-read-private"
